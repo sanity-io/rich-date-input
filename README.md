@@ -1,3 +1,5 @@
+> This is a **Sanity Studio v2 plugin. For the v3 version, please switch to the [main branch](https://github.com/sanity-io/rich-date-input).
+
 ### @sanity/rich-date-input
 A richer date/time type and input component for Sanity form builder
 
