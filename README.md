@@ -1,3 +1,5 @@
+> This is a **Sanity Studio v3** plugin.
+
 # V3 Rich Date Input
 
 Provides a timezone-aware date input for Sanity Studio.
