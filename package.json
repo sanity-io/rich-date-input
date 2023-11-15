@@ -1,7 +1,7 @@
 {
   "name": "@sanity/rich-date-input",
-  "version": "2.0.9",
-  "description": "Date/time input components for Sanity form builder",
+  "version": "3.0.0-beta",
+  "description": "A timezone-aware datetime type and input component for Sanity Studio",
   "keywords": [
     "sanity",
     "cms",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:sanity-io/rich-date-input.git"
+    "url": "git+ssh://git@github.com/sanity-io/rich-date-input.git"
   },
   "license": "MIT",
   "author": "Sanity.io <hello@sanity.io>",
@@ -42,26 +42,29 @@
     "v2-incompatible.js"
   ],
   "scripts": {
-    "clean": "rimraf dist",
     "build": "run-s clean && plugin-kit verify-package --silent && pkg-utils build --strict && pkg-utils --strict",
+    "clean": "rimraf dist",
     "format": "prettier --write --cache --ignore-unknown .",
     "link-watch": "plugin-kit link-watch",
     "lint": "eslint .",
     "prepublishOnly": "run-s build",
-    "watch": "pkg-utils watch --strict"
+    "watch": "pkg-utils watch --strict",
+    "prebuild": "plugin-kit verify-package --silent && pkg-utils",
+    "prepare": "husky install"
   },
   "dependencies": {
-    "@sanity/generate-help-url": "2.0.9",
+    "@sanity/icons": "^2.7.0",
     "@sanity/incompatible-plugin": "^1.0.4",
-    "lodash": "^4.17.15",
-    "moment": "^2.19.1",
-    "moment-timezone": "^0.5.11",
-    "prop-types": "^15.6.0",
-    "react-datepicker": "^1.8.0"
+    "@sanity/ui": "^1.9.3",
+    "@vvo/tzdb": "^6.112.0",
+    "date-fns-tz": "^2.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.4.1",
+    "@commitlint/config-conventional": "^18.4.0",
     "@sanity/pkg-utils": "^3.2.3",
     "@sanity/plugin-kit": "^3.1.10",
+    "@sanity/semantic-release-preset": "^4.1.6",
     "@types/react": "^18.2.37",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
@@ -71,6 +74,8 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.1.0",
     "prettier-plugin-packagejson": "^2.4.6",
