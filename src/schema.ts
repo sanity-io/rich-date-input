@@ -41,7 +41,7 @@ export const richDateSchema = defineType({
     defineField({
       name: 'utc',
       title: 'UTC',
-      type: 'datetime',
+      type: 'string',
     }),
     defineField({
       name: 'timezone',
