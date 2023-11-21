@@ -9,7 +9,7 @@ Provides a timezone-aware date input for Sanity Studio.
 ## Installation
 
 ```sh
-npm install sanity-plugin-v3-rich-date-input
+npm install @sanity/rich-date-input
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ Add it as a plugin in `sanity.config.ts` (or .js):
 
 ```ts
 import {defineConfig} from 'sanity'
-import {richDate} from 'sanity-plugin-v3-rich-date-input'
+import {richDate} from '@sanity/rich-date-input'
 
 export default defineConfig({
   //...
