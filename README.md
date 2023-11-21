@@ -1,48 +1,83 @@
-### @sanity/rich-date-input
-A richer date/time type and input component for Sanity form builder
+> This is a **Sanity Studio v3** plugin.
+
+# V3 Rich Date Input
+
+Provides a timezone-aware date input for Sanity Studio.
+
+![This is an image](assets/plugin.gif)
+
+## Installation
+
+```sh
+npm install sanity-plugin-v3-rich-date-input
+```
 
 ## Usage
 
-- `sanity install @sanity/rich-date-input`
-- In your schema:
-  ```js
-  import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
+Add it as a plugin in `sanity.config.ts` (or .js):
 
-  // ...
-  export default createSchema({
-    name: 'mySchema',
-    types: [
-      //...
-      richDate
-    ]
-  })
+```ts
+import {defineConfig} from 'sanity'
+import {richDate} from 'sanity-plugin-v3-rich-date-input'
 
-  ```
+export default defineConfig({
+  //...
+  plugins: [richDate()],
+})
+```
 
-Typical data output:
+Then, use `richDate` as a type in your schema:
 
-```js
+```ts
+import {defineField, defineType} from 'sanity'
+
+export default defineType({
+  name: 'event',
+  title: 'Event',
+  type: 'document',
+  fields: [
+    def{
+      name: 'scheduledAt',
+      title: 'Scheduled at',
+      type: 'richDate',
+      //this will take the same options available on the datetime type: https://www.sanity.io/docs/datetime-type
+      options: {
+        timeStep: 30
+      }
+    },
+  ],
+})
+```
+
+When a user selects a date, the timezone will be stored in the document. They can choose a different timezone, if desired. The date displayed will be the time as it would be in that timezone. UTC will be calculated from the timezone and local time.
+
+The typical data output should be:
+
+```ts
 {
   _type: 'richDate',
-  local: '2017-02-21T10:15:00+01:00',
-  utc: '2017-02-12T09:15:00Z',
+  local: '2023-02-21T10:15:00+01:00',
+  utc: '2023-02-12T09:15:00Z',
   timezone: 'Europe/Oslo',
   offset: 60
 }
 ```
 
-## Options
+## License
 
-This component accepts the following options via the Sanity schema:
+[MIT](LICENSE) © Sanity.io
 
-```
-options.dateFormat || 'YYYY-MM-DD'
-options.timeFormat || 'HH:mm'
-options.calendarTodayLabel || 'Today'
-options.timeStep || 15
-options.inputUtc || false
-options.inputDate || true
-options.inputTime || true
-options.placeholderDate || moment().format(options.dateFormat)
-options.placeholderTime || moment().format(options.timeFormat)
-```
+## Develop & test
+
+This plugin uses [@sanity/plugin-kit](https://github.com/sanity-io/plugin-kit)
+with default configuration for build & watch scripts.
+
+See [Testing a plugin in Sanity Studio](https://github.com/sanity-io/plugin-kit#testing-a-plugin-in-sanity-studio)
+on how to run this plugin with hotreload in the studio.
+
+### Release new version
+
+Run ["CI & Release" workflow](https://github.com/sanity-io/v3-rich-date-input/actions/workflows/main.yml).
+Make sure to select the main branch and check "Release new version".
+
+Semantic release will only release on configured branches, so it is safe to run release on any branch.
