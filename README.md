@@ -5,7 +5,7 @@ A richer date/time type and input component for Sanity form builder
 
 ## Usage
 
-- `sanity install @sanity/rich-date-input`
+- `sanity install @sanity/rich-date-input@studio-v2`
 - In your schema:
   ```js
   import richDate from 'part:@sanity/form-builder/input/rich-date/schema'
