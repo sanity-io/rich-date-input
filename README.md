@@ -1,4 +1,5 @@
 > This is a **Sanity Studio v3** plugin.
+> For the v2 version, please refer to the [studio-v2 branch](https://github.com/sanity-io/rich-date-input/tree/studio-v2).
 
 # V3 Rich Date Input
 
