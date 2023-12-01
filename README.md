@@ -37,7 +37,7 @@ export default defineType({
   title: 'Event',
   type: 'document',
   fields: [
-    def{
+    defineField({
       name: 'scheduledAt',
       title: 'Scheduled at',
       type: 'richDate',
@@ -45,7 +45,7 @@ export default defineType({
       options: {
         timeStep: 30
       }
-    },
+    }),
   ],
 })
 ```
