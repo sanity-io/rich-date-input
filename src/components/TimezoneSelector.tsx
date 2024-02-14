@@ -13,9 +13,9 @@ interface TimezoneSelectorProps {
 export const TimezoneSelector = (props: TimezoneSelectorProps) => {
   const {onChange, value} = props
   const currentTz = allTimezones.find((tz) => tz.name === value?.timezone)
-  const userTz = allTimezones.find(
-    (tz) => tz.name === Intl.DateTimeFormat().resolvedOptions().timeZone,
-  )!
+  const userTzName = Intl.DateTimeFormat().resolvedOptions().timeZone
+  const userTz = (allTimezones.find((tz) => tz.name === userTzName) ??
+    allTimezones.find((tz: NormalizedTimeZone) => tz.group.includes(userTzName)))!
 
   const handleTimezoneChange = (selectedTz: string) => {
     const newTimezone =
