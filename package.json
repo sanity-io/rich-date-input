@@ -55,8 +55,8 @@
   "dependencies": {
     "@sanity/icons": "^2.7.0",
     "@sanity/incompatible-plugin": "^1.0.4",
-    "@sanity/ui": "^1.9.3",
-    "@vvo/tzdb": "^6.112.0",
+    "@sanity/ui": "^2.0.2",
+    "@vvo/tzdb": "^6.125.0",
     "date-fns-tz": "^2.0.0"
   },
   "devDependencies": {
@@ -83,7 +83,7 @@
     "react-dom": "^18.2.0",
     "react-is": "^18.2.0",
     "rimraf": "^5.0.5",
-    "sanity": "^3.19.3",
+    "sanity": "^3.29.1",
     "styled-components": "^5.3.11",
     "typescript": "^5.2.2"
   },
