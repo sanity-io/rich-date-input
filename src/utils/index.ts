@@ -35,5 +35,6 @@ export const allTimezones = getTimeZones().map((tz) => {
     // all searchable text - this is transformed before being rendered in `<AutoComplete>`
     value: `${tz.currentTimeFormat} ${tz.abbreviation} ${tz.name}`,
     currentTimeOffsetInMinutes: tz.currentTimeOffsetInMinutes,
+    group: tz.group,
   } as NormalizedTimeZone
 })

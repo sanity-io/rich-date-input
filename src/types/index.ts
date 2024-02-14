@@ -14,4 +14,5 @@ export interface NormalizedTimeZone {
   offset: string
   value: string
   currentTimeOffsetInMinutes: number
+  group: string[]
 }

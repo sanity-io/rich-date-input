@@ -43,8 +43,8 @@ export default defineType({
       type: 'richDate',
       //this will take the same options available on the datetime type: https://www.sanity.io/docs/datetime-type
       options: {
-        timeStep: 30
-      }
+        timeStep: 30,
+      },
     }),
   ],
 })
