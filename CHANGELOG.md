@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/sanity-io/rich-date-input/compare/v3.0.1...v3.0.2) (2024-06-26)
+
+### Bug Fixes
+
+- add missing peer dependency `date-fns` ([9aecf00](https://github.com/sanity-io/rich-date-input/commit/9aecf00400ff26d2e114e824a8248d4eea5fb9a8))
+
 ## [3.0.1](https://github.com/sanity-io/rich-date-input/compare/v3.0.0...v3.0.1) (2024-04-14)
 
 ### Bug Fixes
