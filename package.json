@@ -1,6 +1,6 @@
 {
   "name": "@sanity/rich-date-input",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "A timezone-aware datetime type and input component for Sanity Studio",
   "keywords": [
     "sanity",
