@@ -22,7 +22,7 @@ import {defineConfig} from 'sanity'
 import {richDate} from '@sanity/rich-date-input'
 
 export default defineConfig({
-  //...
+  // ...
   plugins: [richDate()],
 })
 ```
@@ -41,7 +41,7 @@ export default defineType({
       name: 'scheduledAt',
       title: 'Scheduled at',
       type: 'richDate',
-      //this will take the same options available on the datetime type: https://www.sanity.io/docs/datetime-type
+      // this will take the same options available on the datetime type: https://www.sanity.io/docs/datetime-type
       options: {
         timeStep: 30,
       },
