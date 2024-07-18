@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.4](https://github.com/sanity-io/rich-date-input/compare/v3.0.3...v3.0.4) (2024-07-18)
+
+### Bug Fixes
+
+- recalculate offsets for possible DST effects ([#13](https://github.com/sanity-io/rich-date-input/issues/13)) ([5d97007](https://github.com/sanity-io/rich-date-input/commit/5d97007f0ab5efa129c7b9ca916e80bee10d91fe))
+
 ## [3.0.3](https://github.com/sanity-io/rich-date-input/compare/v3.0.2...v3.0.3) (2024-06-26)
 
 ### Bug Fixes
