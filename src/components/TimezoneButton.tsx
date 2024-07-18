@@ -1,5 +1,7 @@
-import {Button} from '@sanity/ui'
 import {EarthAmericasIcon} from '@sanity/icons'
+import {Button} from '@sanity/ui'
+import {type ReactNode} from 'react'
+
 import {allTimezones} from '../utils'
 
 interface TimezoneButtonProps {
@@ -7,7 +9,7 @@ interface TimezoneButtonProps {
   timezone: string
 }
 
-export const TimezoneButton = (props: TimezoneButtonProps) => {
+export const TimezoneButton = (props: TimezoneButtonProps): ReactNode => {
   const {onClick, timezone} = props
   const currentTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone
 

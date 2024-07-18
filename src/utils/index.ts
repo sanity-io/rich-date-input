@@ -1,6 +1,7 @@
 import {getTimeZones} from '@vvo/tzdb'
-import {NormalizedTimeZone} from '../types'
 import {formatInTimeZone} from 'date-fns-tz'
+
+import {NormalizedTimeZone} from '../types'
 
 export const unlocalizeDateTime = (datetime: string, timezone: string): string => {
   return formatInTimeZone(datetime, timezone, 'yyyy-MM-dd HH:mm:ss')
@@ -14,7 +15,7 @@ export const unlocalizeDateTime = (datetime: string, timezone: string): string =
  */
 export const getConstructedUTCDate = (utc: string, offset: number): string => {
   const date = new Date(utc)
-  const currentOffset = new Date().getTimezoneOffset() * -1
+  const currentOffset = date.getTimezoneOffset() * -1
   const diff = currentOffset - offset
   const fakeUTCDate = new Date(date.getTime() - diff * 60 * 1000)
   return fakeUTCDate.toISOString()

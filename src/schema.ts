@@ -1,10 +1,11 @@
 import {
   DatetimeDefinition,
-  ObjectDefinition,
-  ObjectSchemaType,
   defineField,
   defineType,
+  ObjectDefinition,
+  ObjectSchemaType,
 } from 'sanity'
+
 import {RichDateInput} from './components/RichDateInput'
 
 const richDateTypeName = 'richDate' as const
