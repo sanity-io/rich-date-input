@@ -1,12 +1,13 @@
+import {Box, Dialog, Flex} from '@sanity/ui'
+import {type ReactNode, useCallback, useState} from 'react'
 import {ObjectInputMember, ObjectInputProps} from 'sanity'
-import {Box, Flex, Dialog} from '@sanity/ui'
-import {RelativeDateTimePicker} from './RelativeDateTimePicker'
-import {TimezoneSelector} from './TimezoneSelector'
-import {useCallback, useState} from 'react'
-import {TimezoneButton} from './TimezoneButton'
-import {RichDate} from '../types'
 
-export const RichDateInput = (props: ObjectInputProps) => {
+import {RichDate} from '../types'
+import {RelativeDateTimePicker} from './RelativeDateTimePicker'
+import {TimezoneButton} from './TimezoneButton'
+import {TimezoneSelector} from './TimezoneSelector'
+
+export const RichDateInput = (props: ObjectInputProps): ReactNode => {
   const {onChange, value, members, schemaType} = props
   const {options} = schemaType
   const localMember = members.find((member) => member.kind === 'field' && member.name === 'local')
@@ -25,6 +26,7 @@ export const RichDateInput = (props: ObjectInputProps) => {
             <ObjectInputMember
               {...props}
               member={localMember}
+              // eslint-disable-next-line react/jsx-no-bind
               renderInput={(renderInputProps) => (
                 <RelativeDateTimePicker
                   {...renderInputProps}
@@ -41,6 +43,7 @@ export const RichDateInput = (props: ObjectInputProps) => {
             <ObjectInputMember
               {...props}
               member={timezoneMember}
+              // eslint-disable-next-line react/jsx-no-bind
               renderInput={() => (
                 <TimezoneButton onClick={onOpen} timezone={value?.timezone ?? ''} />
               )}

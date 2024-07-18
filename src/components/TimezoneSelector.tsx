@@ -1,49 +1,54 @@
 import {SearchIcon} from '@sanity/icons'
+import {Autocomplete, Box, Card, Text} from '@sanity/ui'
+import {formatInTimeZone, getTimezoneOffset, zonedTimeToUtc} from 'date-fns-tz'
+import {type ReactNode, useCallback} from 'react'
 import {ObjectInputProps, set} from 'sanity'
-import {allTimezones, unlocalizeDateTime} from '../utils'
+
 import {NormalizedTimeZone, RichDate} from '../types'
-import {Autocomplete, Card, Text, Box} from '@sanity/ui'
-import {formatInTimeZone, zonedTimeToUtc} from 'date-fns-tz'
+import {allTimezones, unlocalizeDateTime} from '../utils'
 
 interface TimezoneSelectorProps {
   onChange: Pick<ObjectInputProps, 'onChange'>['onChange']
   value?: RichDate
 }
 
-export const TimezoneSelector = (props: TimezoneSelectorProps) => {
+export const TimezoneSelector = (props: TimezoneSelectorProps): ReactNode => {
   const {onChange, value} = props
   const currentTz = allTimezones.find((tz) => tz.name === value?.timezone)
   const userTzName = Intl.DateTimeFormat().resolvedOptions().timeZone
   const userTz = (allTimezones.find((tz) => tz.name === userTzName) ??
     allTimezones.find((tz) => tz.group.includes(userTzName)))!
 
-  const handleTimezoneChange = (selectedTz: string) => {
-    const newTimezone =
-      allTimezones.find((tz) => tz.value === selectedTz) ?? (userTz as NormalizedTimeZone)
+  const handleTimezoneChange = useCallback(
+    (selectedTz: string) => {
+      const newTimezone =
+        allTimezones.find((tz) => tz.value === selectedTz) ?? (userTz as NormalizedTimeZone)
 
-    const offset = newTimezone.currentTimeOffsetInMinutes ?? 0
-    const timezonePatch = set(newTimezone.name, ['timezone'])
-    const offsetPatch = set(offset, ['offset'])
-    const patches = [timezonePatch, offsetPatch]
+      const timezonePatch = set(newTimezone.name, ['timezone'])
+      const patches = [timezonePatch]
 
-    //then, recalculate UTC and local from "old" time with the new offset
-    if (value?.utc) {
-      const desiredDateTime = unlocalizeDateTime(value.utc, value.timezone)
-      const newUtcDate = zonedTimeToUtc(desiredDateTime, newTimezone.name).toISOString()
-      const newLocalDate = formatInTimeZone(
-        newUtcDate,
-        newTimezone.name,
-        "yyyy-MM-dd'T'HH:mm:ssXXX",
-      )
-      patches.push(set(newUtcDate, ['utc']))
-      patches.push(set(newLocalDate, ['local']))
-    }
-    onChange(patches)
-  }
+      // then, recalculate UTC and local from "old" time with the new offset
+      if (value?.utc) {
+        const desiredDateTime = unlocalizeDateTime(value.utc, value.timezone)
+        const newUtcDateObject = zonedTimeToUtc(desiredDateTime, newTimezone.name)
+        const newOffset = getTimezoneOffset(newTimezone.name, newUtcDateObject) / 60 / 1000
+        const newLocalDate = formatInTimeZone(
+          newUtcDateObject.toISOString(),
+          newTimezone.name,
+          "yyyy-MM-dd'T'HH:mm:ssXXX",
+        )
+        patches.push(set(newUtcDateObject.toISOString(), ['utc']))
+        patches.push(set(newLocalDate, ['local']))
+        patches.push(set(newOffset, ['offset']))
+      }
+      onChange(patches)
+    },
+    [onChange, userTz, value],
+  )
 
   return (
-    //taken from Scheduled Publishing, again!
-    //https://github.com/sanity-io/sanity-plugin-scheduled-publishing/blob/bb282e3df9a8a73df37fab8ee1fdd0e2430745be/src/components/dialogs/DialogTimeZone.tsx#L100
+    // taken from Scheduled Publishing, again!
+    // https://github.com/sanity-io/sanity-plugin-scheduled-publishing/blob/bb282e3df9a8a73df37fab8ee1fdd0e2430745be/src/components/dialogs/DialogTimeZone.tsx#L100
     <Box padding={4}>
       <Autocomplete
         fontSize={2}
@@ -59,6 +64,7 @@ export const TimezoneSelector = (props: TimezoneSelectorProps) => {
           constrainSize: true,
           placement: 'bottom-start',
         }}
+        // eslint-disable-next-line react/jsx-no-bind
         renderOption={(option) => {
           return (
             <Card as="button" padding={3}>
@@ -70,6 +76,7 @@ export const TimezoneSelector = (props: TimezoneSelectorProps) => {
             </Card>
           )
         }}
+        // eslint-disable-next-line react/jsx-no-bind
         renderValue={(_, option) => {
           if (!option) return ''
           return `${option.alternativeName} (${option.namePretty})`

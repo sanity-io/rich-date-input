@@ -1,5 +1,6 @@
 import {definePlugin} from 'sanity'
-import {richDateSchema, RichDateDefinition, RichDateSchemaType} from './schema'
+
+import {RichDateDefinition, richDateSchema, RichDateSchemaType} from './schema'
 import {RichDate} from './types'
 
 export const richDate = definePlugin({
@@ -9,4 +10,4 @@ export const richDate = definePlugin({
   },
 })
 
-export type {RichDateDefinition, RichDateSchemaType, RichDate}
+export type {RichDate, RichDateDefinition, RichDateSchemaType}
