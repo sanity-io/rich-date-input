@@ -5,6 +5,12 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.5](https://github.com/sanity-io/rich-date-input/compare/v3.0.4...v3.0.5) (2024-12-18)
+
+### Bug Fixes
+
+- make react 19 compatible ([#19](https://github.com/sanity-io/rich-date-input/issues/19)) ([6a55154](https://github.com/sanity-io/rich-date-input/commit/6a551547b79977be1570d2b639f6fbd68f018222))
+
 ## [3.0.4](https://github.com/sanity-io/rich-date-input/compare/v3.0.3...v3.0.4) (2024-07-18)
 
 ### Bug Fixes
