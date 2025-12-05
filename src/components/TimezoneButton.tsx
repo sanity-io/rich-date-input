@@ -15,6 +15,7 @@ export const TimezoneButton = (props: TimezoneButtonProps): ReactNode => {
 
   const label =
     allTimezones.find((tz) => tz.name === timezone)?.abbreviation ??
+    allTimezones.find((tz) => tz.group.includes(timezone))?.abbreviation ??
     allTimezones.find((tz) => tz.name === currentTimezone)?.abbreviation ??
     allTimezones.find((tz) => tz.group.includes(currentTimezone))?.abbreviation
 
