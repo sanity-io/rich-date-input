@@ -5,6 +5,15 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.0.7 (2025-12-05)</small>
+
+- fix: add additional group check for timezone value (#21) ([2f34fa4](https://github.com/sanity-io/rich-date-input/commit/2f34fa4)), closes [#21](https://github.com/sanity-io/rich-date-input/issues/21)
+- fix: calculate offset dynamically for DST transitions in date display (#26) ([c606a8e](https://github.com/sanity-io/rich-date-input/commit/c606a8e)), closes [#26](https://github.com/sanity-io/rich-date-input/issues/26)
+- fix: fix value offset for lint (#28) ([755bf9a](https://github.com/sanity-io/rich-date-input/commit/755bf9a)), closes [#28](https://github.com/sanity-io/rich-date-input/issues/28)
+- fix: remove the double label caused by datetimeinput now including its own one (#24) ([99292d6](https://github.com/sanity-io/rich-date-input/commit/99292d6)), closes [#24](https://github.com/sanity-io/rich-date-input/issues/24)
+- chore: audit fix deps (#27) ([3662b3d](https://github.com/sanity-io/rich-date-input/commit/3662b3d)), closes [#27](https://github.com/sanity-io/rich-date-input/issues/27)
+- Update README.md ([841a93e](https://github.com/sanity-io/rich-date-input/commit/841a93e))
+
 ## [3.0.6](https://github.com/sanity-io/rich-date-input/compare/v3.0.5...v3.0.6) (2025-07-10)
 
 ### Bug Fixes
