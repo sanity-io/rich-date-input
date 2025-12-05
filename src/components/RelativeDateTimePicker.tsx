@@ -59,7 +59,7 @@ export const RelativeDateTimePicker = (props: RelativeDateTimePickerProps): Reac
   const displayOffset =
     value?.utc && value?.timezone
       ? getTimezoneOffset(value.timezone, new Date(value.utc)) / 60 / 1000
-      : value?.offset ?? 0
+      : (value?.offset ?? 0)
 
   const dateToDisplay = value?.utc ? getConstructedUTCDate(value.utc, displayOffset) : ''
 
