@@ -1,15 +1,18 @@
 import {formatInTimeZone, getTimezoneOffset, zonedTimeToUtc} from 'date-fns-tz'
 import {type ReactNode, useCallback} from 'react'
-import {DateTimeInput, FormPatch, InputProps, PatchEvent, set, unset} from 'sanity'
+import {DateTimeInput, FieldProps, FormPatch, PatchEvent, set, unset} from 'sanity'
 
 import {RichDate} from '../types'
 import {getConstructedUTCDate, unlocalizeDateTime} from '../utils'
 
-interface RelativeDateTimePickerProps extends Omit<InputProps, 'renderDefault'> {
+interface RelativeDateTimePickerProps extends Omit<FieldProps, 'renderDefault'> {
   dateValue?: RichDate
 }
 export const RelativeDateTimePicker = (props: RelativeDateTimePickerProps): ReactNode => {
-  const {dateValue: value, onChange} = props
+  const {
+    dateValue: value,
+    inputProps: {onChange},
+  } = props
 
   const handleDateChange = useCallback(
     (patch: FormPatch | PatchEvent | FormPatch[]) => {

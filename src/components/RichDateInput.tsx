@@ -27,18 +27,18 @@ export const RichDateInput = (props: ObjectInputProps): ReactNode => {
               {...props}
               member={localMember}
               // eslint-disable-next-line react/jsx-no-bind
-              renderInput={(renderInputProps) => (
+              renderField={(renderFieldProps) => (
                 <RelativeDateTimePicker
-                  {...renderInputProps}
+                  {...renderFieldProps}
                   dateValue={value as RichDate}
-                  schemaType={{...renderInputProps.schemaType, options}}
-                  onChange={onChange}
+                  schemaType={{...renderFieldProps.schemaType, options}}
+                  inputProps={{...renderFieldProps.inputProps, onChange: onChange}}
                 />
               )}
             />
           )}
         </Box>
-        <Box flex={[1]} marginLeft={[2, 2, 3, 4]}>
+        <Box flex={[1]} marginLeft={[2, 2, 3, 4]} marginTop={2}>
           {timezoneMember && (
             <ObjectInputMember
               {...props}
