@@ -5,6 +5,10 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## <small>3.0.8 (2025-12-29)</small>
+
+- fix: update package.json and package-lock.json to support Sanity v5 (#29) ([cb042fd](https://github.com/sanity-io/rich-date-input/commit/cb042fd)), closes [#29](https://github.com/sanity-io/rich-date-input/issues/29)
+
 ## <small>3.0.7 (2025-12-05)</small>
 
 - fix: add additional group check for timezone value (#21) ([2f34fa4](https://github.com/sanity-io/rich-date-input/commit/2f34fa4)), closes [#21](https://github.com/sanity-io/rich-date-input/issues/21)
